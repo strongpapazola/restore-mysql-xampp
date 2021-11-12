@@ -17,11 +17,15 @@ Start MySQL from XAMPP control panel
 And, voilà!
 
 =================================================================
-```[ERROR] InnoDB: Missing MLOG_CHECKPOINT at```
+```
+[ERROR] InnoDB: Missing MLOG_CHECKPOINT at
+```
 It seems that your database has table corruption causing this problem. Please backup the data directory /www/server/data first
 
 Add the following parameters to the mysql configuration
-```[mysql]
-innodb_force_recovery = 6```
+```
+[mysql]
+innodb_force_recovery = 6
+```
 
 Then restart MySQL and immediately use mysqldump to export the data to the database. After completion, remove innodb_force_recovery, then re-create the database and import the data.
